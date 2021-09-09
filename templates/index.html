@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}" />
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css.css')}}" /> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="section_coupon">
+        <div class="inner_coupon">
+            <div class="area_coupon">
+                <div class="box_region">
+                    <strong class="tit_region ir_pm">Coupon Genie</strong>
+                    <em class="txt_region">Lucretia Chatbot</em>
+                    <div class="row">
+                        <div class="col-md-10 mr-auto ml-auto">
+                            <form>
+                                <div id="chatbox">
+                                    <div>
+                                        <p class="botText"><span>Welcome to Casa de Tan Bank, my name is Lucretia. May I know your name?</span></p>
+                                    </div>
+                                </div>
+                                <div id="userInput">
+                                    <div>
+                                        <input id="text" type="text" name="msg" placeholder="111" class="form-control">
+                                        <button type="submit" id="send" class="btn btn-warning">Send</button>
+                        
+                                        <!-- <button type="submit" id="send" class="btn btn-warning">Send</button> -->
+                                        <!-- <button type="submit" id="send" class="btn_coupon">Submit</button> -->
+                                        <!-- <button type="submit" class="btn_coupon">Submit</button> -->
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="row">
+        <div class="col-md-10 mr-auto ml-auto">
+    <h1>Tan-Nguyen AI ChatBot</h1>
+    <form>
+        <div id="chatbox">
+            <div class="col-md-8 ml-auto mr-auto">
+                <p class="botText"><span>Welcome to Casa de Tan Bank, my name is Lucretia. May I know your name?</span></p>
+            </div>
+        </div>
+        <div id="userInput" class="row">
+            <div class="col-md-10">
+                <input id="text" type="text" name="msg" placeholder="Message" class="form-control">
+                <button type="submit" id="send" class="btn btn-warning">Send</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+</div> -->
+
+<!-- ########################### -->
+    <div id="kakaoContent" class="cont_coupon" role="main">
+        <div id="cMain">
+            <div id="mArticle">
+                <h2 id="kakaoBody" class="screen_out">Coupon</h2>
+            <!-- section_coupon -->
+                <div class="section_coupon">
+                    <div class="inner_coupon">
+                        <div class="area_coupon">
+                            <div class="box_region">
+                                <strong class="tit_region ir_pm">Coupon Genie</strong>
+                                <em class="txt_region">Lucretia Chatbot</em>
+                                <div class="row">
+                                    <div class="col-md-10 mr-auto ml-auto">
+                                        <form>
+                                            <div id="chatbox">
+                                                <div>
+                                                    <p class="botText"><span>Welcome to Casa de Tan Bank, my name is Lucretia. May I know your name?</span></p>
+                                                </div>
+                                            </div>
+                                            <div id="userInput">
+                                                <div>
+                                                    <input id="text" type="text" name="msg" placeholder="111" class="form-control">
+                                                    <button type="submit" id="send" class="btn btn-warning">Send</button>
+                                     
+                                                    <!-- <button type="submit" id="send" class="btn btn-warning">Send</button> -->
+                                                    <!-- <button type="submit" id="send" class="btn_coupon">Submit</button> -->
+                                                    <!-- <button type="submit" class="btn_coupon">Submit</button> -->
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                        <!-- <ul class="list_code">
+
+                                            <li class="item_code ">
+                                                <label for="code" class="lab_name">Type to ask me something:</label>
+                                                <div class="group_inp">
+                                                    <input type="text" id="code" text="msg" class="inp_info"> -->
+                                                    <!-- <span class="cursor_g"></span>
+                                                </div>  -->
+                                                <!-- <div class="wrap_error">
+                                                    <span class="ico_guardian ico_error">User Code Text Missing</span>
+                                                </div>2020-06-12 추가 -->
+                                            </li><!-- 2020-06-12 수정 -->
+                                        </ul>
+
+                                        <!-- <button type="submit" id="send" class="btn_coupon">Submit</button> -->
+                                        <!-- </fieldset> -->
+                                <!-- </form> -->
+                            </div>
+                        </div>
+
+                        <div class="box_noti">
+                            <div class="inner_noti">
+                                <strong class="tit_noti">
+                                    <span class="ico_guardian ico_noti"></span>
+                                    <span class="txt_noti">Notice</span>
+                                </strong>
+                                <ul class="list_noti">
+                                    <li>Be sure you choose proper questions about banking.</li>
+                                    <li>Exit command: ("quit", "goodbye", "exit", "no") </li>
+                                    <li>The chatbot is still developing, please give us some feedback!.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- // section_coupon -->
+            </div><!--// mArticle -->
+        </div><!-- // cMain -->
+    </div><!-- // kakaoContent -->
+    <hr class="hide">
+
+
+    <!-- ########################### -->
+
+
+    <script>
+        let username =""
+        $(document).ready(function() {
+            $("form").on("submit", function(event) {
+                var rawText = $("#text").val();
+                var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
+                $("#text").val("");
+                $("#chatbox").append(userHtml);
+                document.getElementById("userInput").scrollIntoView({
+                    block: "start",
+                    behavior: "smooth",
+                });
+                if(!username){
+                    username = rawText
+                    rawText =''
+                }
+                $.ajax({
+                    data: {
+                        msg: rawText,
+                        username:username,
+                    },
+                    type: "POST",
+                    url: "/get",
+                }).done(function(data) {
+                    var botHtml = '<p class="botText"><span>' + data + "</span></p>";
+                    $("#chatbox").append($.parseHTML(botHtml));
+                    document.getElementById("userInput").scrollIntoView({
+                        block: "start",
+                        behavior: "smooth",
+                    });
+                });
+                event.preventDefault();
+            });
+        });
+    </script>
+</body>
+
+</html>
